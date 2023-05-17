@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 import sys
 from kss import split_sentences
 from collections import defaultdict
+import json
 
 sys.path.append('../')
 from modules import yt,stt,unsmile
@@ -31,8 +32,13 @@ def index(request):
 
 @csrf_exempt
 def check(request):
+    try:
+        url = request.POST['url']
+    except:
+        print('JSON 데이터')
+        data=json.loads(request.body)
+        url = data.get('url')
     response = {}
-    url = request.POST['url']
 
     # yt 부분
     yt_res,yt_content = yt.download_shorts(url)
@@ -50,7 +56,6 @@ def check(request):
     all_text= ''
     for stt_result_text in stt_result['results']['utterances']:
         all_text +=stt_result_text['msg']
-    print(all_text)
     texts = split_sentences(all_text) # 문장 분리
 
     # unsmile 부분
@@ -70,9 +75,10 @@ def check(request):
             ps.append(tmp)
     response['num_problem_sentences'] = nps
     response['problem_sentences'] = ps
-    for key in unsmile_score.keys():
+    for key in unsmile_score.keys():    #score별 평균 구하기
         unsmile_score[key] /= len(texts)
-    response['score'] = unsmile_score
+
+    response['age'] = unsmile.select_age(nps, unsmile_score['clean'])
 
     # html에서 한글 깨지는 거 수정
     return JsonResponse(response,json_dumps_params={'ensure_ascii': False}, status=200)
