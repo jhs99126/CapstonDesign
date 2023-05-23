@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'middleware.prevent_duplicates.PreventDuplicateRequestsMiddleware',
+    # 'middleware.prevent_duplicates.PreventDuplicateRequestsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

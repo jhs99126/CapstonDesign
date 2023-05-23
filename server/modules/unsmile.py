@@ -34,10 +34,17 @@ def calcScore(textline):
     is_not_good=False          
 
     # clean이 30% 이상일 때, 가장 높은 index의 score가 0.6 이하일 때는 good
-    if (index !=9) & (text_pipe[-1]['score']<0.3) & (text_pipe[index]['score']>0.6):
+    if (index !=9) & ((text_pipe[-1]['score']<0.3) | (text_pipe[index]['score']>0.58)):
         is_not_good = True
     return is_not_good,text_pipe,reasonlist[index]
 
+def select_age(num_problem_sentences,score):
+    if num_problem_sentences==0:
+        return 0
+    # clean이 0.73보다 크면 7세
+    if score>0.73:
+        return 7
+    return 12
 
 if __name__=="__main__":
     print(calcScore(input("text 입력: ")))
