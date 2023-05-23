@@ -57,7 +57,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:paddingStart="10dp"
         android:paddingEnd="10dp">
 
@@ -66,28 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="문제가 될 수 있는 문장 \n"
-            android:textSize="20sp" />
-    </ScrollView>
-
-    <View
-        android:id="@+id/view_dash_line3"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_gravity="center"
-        android:background="@color/gray"
-        android:layerType="hardware" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp">
-
-        <TextView
-            android:id="@+id/textView_gpt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CHAT-GPT의 설명 : \n"
             android:textSize="20sp" />
     </ScrollView>
 

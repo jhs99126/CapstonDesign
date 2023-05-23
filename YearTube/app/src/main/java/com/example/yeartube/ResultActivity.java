@@ -26,10 +26,8 @@ public class ResultActivity extends AppCompatActivity {
         textView_title = findViewById(R.id.textView_title);
         textView_sentence = findViewById(R.id.textView_sentence);
         textView_age = findViewById(R.id.textView_age);
-        textView_gpt = findViewById(R.id.textView_gpt);
 
         String sentence = "[문제가 될 수 있는 문장] \n";
-        String gpt = "[CHAT-GPT의 설명] \n";
         String title = "[제목] : ";
 
         Intent intent = getIntent();
@@ -39,11 +37,12 @@ public class ResultActivity extends AppCompatActivity {
 
         int num_problem_sentences = intent.getIntExtra("num_problem_sentences", 0);
 
-        //int age = intent.getIntExtra("age", 0);
-        int age = 0;
+        int age = intent.getIntExtra("age", 0);
         ArrayList<String> sentences = (ArrayList<String>) intent.getStringArrayListExtra("problem_sentences");
         //ArrayList<String> gpts = (ArrayList<String>) intent.getStringArrayListExtra("gpts");
-
+        if (num_problem_sentences == 0) {
+            sentence = sentence + " 문제가 될만한 문장이 없음.";
+        }
         for (int i = 0; i < num_problem_sentences; i++) {
 
             sentence = sentence + " " + sentences.get(i) + "\n";
