@@ -44,7 +44,7 @@ public class EnterlinkActivity extends AppCompatActivity {
         setContentView(R.layout.enterlink_activity);
 
         edit_youtube_link = (EditText) findViewById(R.id.edit_youtube_link);
-        edit_youtube_link.setText("https://www.youtube.com/shorts/FBq8KJmn4g0");
+        //edit_youtube_link.setText("https://www.youtube.com/shorts/FBq8KJmn4g0");
         btn_send_link = (Button) findViewById(R.id.btn_send_link);
         text = edit_youtube_link.getText().toString();
 
