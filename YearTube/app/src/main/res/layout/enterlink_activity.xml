@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:enabled="true"
         android:hint="@string/example_link"
         android:textColor="@color/gray"
         android:textSize="25sp" />

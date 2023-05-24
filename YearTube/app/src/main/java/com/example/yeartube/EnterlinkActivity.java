@@ -37,7 +37,6 @@ public class EnterlinkActivity extends AppCompatActivity {
 
     Button btn_send_link;
     EditText edit_youtube_link;
-    String text;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +45,13 @@ public class EnterlinkActivity extends AppCompatActivity {
         edit_youtube_link = (EditText) findViewById(R.id.edit_youtube_link);
         //edit_youtube_link.setText("https://www.youtube.com/shorts/FBq8KJmn4g0");
         btn_send_link = (Button) findViewById(R.id.btn_send_link);
-        text = edit_youtube_link.getText().toString();
 
         btn_send_link.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+
+                String text = edit_youtube_link.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), LoadingScreenActivity.class);
                 intent.putExtra("text", text);
                 startActivity(intent);

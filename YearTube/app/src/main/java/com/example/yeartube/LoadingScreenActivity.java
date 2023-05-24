@@ -44,8 +44,9 @@ public class LoadingScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loading_screen);
 
         progressBar = findViewById(R.id.progress_bar);
-
+        textView = findViewById(R.id.textView);
         // MainActivity에서 전달된 텍스트 가져오기
+        //textView.setText(getIntent().getStringExtra("text"));
         text = getIntent().getStringExtra("text");
 
         if (requestQueue == null) {
